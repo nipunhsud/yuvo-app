@@ -6,25 +6,54 @@ import { StatusBar } from '@ionic-native/status-bar';
 
 import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
+import { AgmCoreModule } from '@agm/core';
+import { HttpModule } from '@angular/http';
+import { Geolocation } from '@ionic-native/geolocation';
+import { RouterModule, Routes } from '@angular/router';
+import { QuestionPage } from '../pages/question/question';
+import { MainPage } from '../pages/main/main';
+import { QuestionAnswerPage } from '../pages/question-answer/question-answer';
+import { AnswerPage } from '../pages/answer/answer';
 
 @NgModule({
   declarations: [
     MyApp,
-    HomePage
+    HomePage,
+    QuestionPage,
+    MainPage,
+    QuestionAnswerPage,
+    AnswerPage
   ],
   imports: [
     BrowserModule,
-    IonicModule.forRoot(MyApp)
+    HttpModule,
+    IonicModule.forRoot(MyApp),
+    AgmCoreModule.forRoot({
+      apiKey: 'AIzaSyC6cDj3MI_KcV9VVg-R_guAPMJtkxuxtRI',
+      libraries: ['places']
+    }),
+    RouterModule.forRoot(
+      [
+        { path: 'home', component: HomePage },
+        { path: 'question-list', component: QuestionPage },
+      ],
+      { enableTracing: true } // <-- debugging purposes only
+    )
   ],
   bootstrap: [IonicApp],
   entryComponents: [
     MyApp,
-    HomePage
+    MainPage,
+    QuestionAnswerPage,
+    AnswerPage
   ],
   providers: [
     StatusBar,
     SplashScreen,
+    Geolocation,
     {provide: ErrorHandler, useClass: IonicErrorHandler}
   ]
+  
 })
 export class AppModule {}
+
