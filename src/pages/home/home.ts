@@ -81,8 +81,9 @@ export class HomePage implements OnInit {
   }
 
   public selectedItem(item: AutocompletePrediction){
-    this.questionList = ["Bar", "Open Late", "Large Group"];
+    this.questionList = ["Bar", "Open Late", "Large Group"]; // TODO Store this in the database
     console.log(item.description);
+    console.log(item.types.toString());
     this.selectedPlace = item;
     this.searchTerm = item.description;
     this.placeList = null;

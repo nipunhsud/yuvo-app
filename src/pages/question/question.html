@@ -1,5 +1,4 @@
 <ion-header>
-  <ion-header>
     <ion-navbar>
       <!-- <ion-title> -->
             <!-- <ion-toolbar> -->
@@ -8,26 +7,25 @@
                   <ion-icon>Search</ion-icon>
                 </ion-segment-button>
                 <ion-segment-button value="answer">
-                  <ion-icon>Answer Dashboard</ion-icon>
+                  <ion-icon>My Answers</ion-icon>
                 </ion-segment-button>
               </ion-segment>
             <!-- </ion-toolbar> -->
       <!-- </ion-title> -->
     </ion-navbar>
   </ion-header>
-</ion-header>
 
 
-<ion-content padding *ngIf='questionList'>
-    <ion-list radio-group>
-        <ion-card *ngFor="let question of questionList"  (click)="onQuestionSelect(question)">
+<ion-content padding >
+    <ion-list padding radio-group *ngIf='questionList'>
+        <ion-card padding *ngFor="let question of questionList"  (click)="onQuestionSelect(question)">
             <ion-card-content>
               <ion-card-title>
                   {{question.locationName}}
                 </ion-card-title>
-              <p>
+              <!-- <p>
                   {{question.query}}
-              </p>
+              </p> -->
             </ion-card-content>
           </ion-card>
         <!-- <ion-item *ngFor="let question of questionList" (click)="onQuestionSelect(question)">
